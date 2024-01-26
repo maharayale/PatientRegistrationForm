@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<!-- 
+Description: Submit page, designed to give response to the the user after completing Patient Registration form. 
+It takes the firstname of the user and acknowelede the registration. 
+by: Ma Ya
+Date last edited: 01/26/2024
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Page after completion of Patient Registration form.</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.ico " type="image/x-icon" />
+  </head>
+
+  <body style="background-color: #aec1f9">
+    <!-- The logo and the time section -->
+    <header class="sticky-header">
+      <iframe id="iframeHeader" src="./header.html" scrolling="no"></iframe>
+      <hr />
+    </header>
+
+    <section class="center">
+      <script>
+        // Function to set cookies in local storage
+        function setCookie(name, value) {
+          localStorage.setItem(name, value);
+        }
+
+        // Function to get the value of a cookie from local storage
+        function getCookie(name) {
+          return localStorage.getItem(name);
+        }
+
+        // Function to handle form submission
+        function handleSubmit() {
+          // Get the firstname from the local storage
+          var firstname = getCookie("firstname");
+
+          // Display a message with the "Thank you, firstname!" in one line with styling
+          var messageContainer = document.querySelector(".center");
+
+          var thankYouMessage = document.createElement("h1");
+          thankYouMessage.id = "thankYou";
+          thankYouMessage.innerHTML =
+            '<span style="color: black; font-weight: bold;">Thank you,</span> <span style="color: blue; font-weight: bold;">' +
+            firstname +
+            "</span>!";
+          messageContainer.insertBefore(
+            thankYouMessage,
+            messageContainer.firstChild
+          );
+        }
+
+        // Event listener for form submission
+        document.addEventListener("DOMContentLoaded", function () {
+          var form = document.getElementById("myForm");
+
+          // Call the handleSubmit function when the page loads
+          handleSubmit();
+
+          // Redirect to the specified page (index.html)
+          form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the form from actually submitting
+            var firstname = document.getElementById("firstname").value; // Assuming the input field has an ID 'firstname'
+            setCookie("firstname", firstname);
+            window.location.href = "index.html";
+          });
+        });
+      </script>
+
+      <p>
+        Our team will review your information, and you will receive an email or
+        aphone call to
+      </p>
+      <p>
+        schedule your first appointment. In the meantime, please explore our
+        website to know more about our services
+      </p>
+      <br />
+      <br />
+
+      <p>
+        <strong>In Case of Emergency:</strong> If you are in an emergency
+        situation, please call 911 immediately. Your safety and well-being are
+        our top priorities.
+      </p>
+      <br />
+      <br />
+
+      <p>
+        If you have any questions or need assistance, please don't hesitate to
+        contact our patient support team at:
+      </p>
+      <h3>Address</h3>
+      <p>2304 Ravenlake Dr<br />Pearland, TX, 77584</p>
+      <p>Phone numbers: 832-000-000 and 713-000-000</p>
+      <p>email: customerservice@mkat.com</p>
+      <p><b>Website:</b> https://mkat.com</p>
+      <br />
+
+      <p>
+        Thank you! again for choosing mKaT's Clinic. We look forward to serving
+        your healthcare needs.
+      </p>
+      <br /><br />
+
+      <form action="index.html" method>
+        <input type="submit" value="Go back" />
+      </form>
+    </section>
+    <br /><br />
+    <hr />
+    <br /><br />
+    <!-- Footer section -->
+    <section class="iframe">
+      <iframe id="iframeFooter" src="./footer.html" scrolling="no"></iframe>
+    </section>
+    <!-- custome java script -->
+    <script src="./reviewPage.js"></script>
+  </body>
+</html>

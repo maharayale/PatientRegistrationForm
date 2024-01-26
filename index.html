@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+<!-- 
+Description: Main HTML page for Patient Registration Form.
+The page is designed to collect patient information.
+This html file linked to external css and java script files for styling and to make it dynamic and responsive. 
+by: Ma Ya
+Date last edited: 01/24/2024
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> mKaT's Patient Registration form </title>
+      <!-- Load external CSS styles -->
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">   
+  </head>
+
+  <body>
+
+    <div id="table-of-contents">
+    <h2>Contents</h2>
+    <ul>
+      <li>
+        <ul>
+        <details id="info">
+          <summary><a href="#info"> Patient Information </a></summary>   <br>                 
+            <li class="tab"><a href="#first-name">First Name</a></li>
+            <li class="tab"><a href="#middle-initial">Middle Initial</a></li>
+            <li class="tab"><a href="#last-name">Last Name</a></li>
+            <li class="tab"><a href="#date-of-birth">Date of Birth</a></li>
+            <li class="tab"><a href="#gender">Gender</a></li>
+          </ul>
+        </details>
+      </li>
+
+      <li>
+        <details id="Address"> 
+      <summary><a href="#Addresses"> Addresses </a></summary>   <br>  
+          <ul>
+            <li class="tab"><a href="#Address-Line-1">Address Line 1</a></li>
+            <li class="tab"><a href="#Address-Line-2">Address Line 2</a></li>
+            <li class="tab"><a href="#city">City</a></li>
+            <li class="tab"><a href="#state">State</a></li>
+            <li class="tab"><a href="#zip">Zipcode</a></li>
+            <li class="tab"><a href="#email">Email</a></li>
+            <li class="tab"><a href="#phone">Phone Number</a></li>
+          </ul>
+        </details>
+    </li>
+     
+     <li>
+        <details id="contact" >
+          <summary><a href="#contact"> Emergency Contacts </a></summary>   <br>  
+          <ul>
+            <li class="tab"><a href="#contact-name">Contact Name</a></li>
+            <li class="tab"><a href="#relationship">Relationship</a></li>
+            <li class="tab"><a href="#phone">Emergency Phone Number</a></li>
+            <li class="tab"><a href="#doctor-name">Doctor Name</a></li>
+             <li class="tab"><a href="#phone">Doctor Phone Number</a></li>
+          </ul>
+        </details>
+      </li>
+        
+ <li>
+        <details id="insurance">
+          <summary><a href="#insurance"> Insurance </a></summary>   <br>  
+          <ul>
+            <li class="tab"><a href="#insurance_avai">Insurance Availablity</a></li>
+            <li class="tab"><a href="#insurance-name ">Insurance Name</a></li>
+            <li class="tab"><a href="insurance-id">Insurance Policy Number</a></li>
+          </ul>
+        </details>
+      </li>
+        <li>
+        <details id="history">
+          <summary><a href="#history"> Medical History </a></summary>   <br>  
+          <ul>
+            <li class="tab"><a href="#reason">Reason to Visit</a></li>
+            <li class="tab"><a href="#pain">Pain</a></li>
+            <li class="tab"><a href="#pain-level">Pain Level</a></li>
+            <li class="tab"><a href="#medial-history">Brief edical History</a></li>
+          </ul>
+        </details>
+      </li>
+ <li>
+        <details id="create">
+          <summary><a href="#create"> Create Account </a></summary>   <br>  
+          <ul>
+            <li class="tab" id="username"><a href="#username">User Name</a></li>
+            <li class="tab"><a href="#password "> Password</a></li>
+            <li class="tab"><a href="confirm-password">Confirm Password</a></li>
+          </ul>
+        </details>
+      </li>   
+  </div>
+
+    <!-- The logo and the time section -->
+      <header class="sticky-header">
+          <iframe id="iframeHeader" src="./header.html" scrolling="no"></iframe>
+          <hr />
+      </header>
+
+    <!-- Flying logo  -->
+      <div id="flying-logo-container">
+          <img src="mkat_flyer.PNG" alt="Flying Nature" id="flying-logo" />
+      </div>
+
+    <!-- Main section -->
+    <section class="registration">
+     <form
+        name="createaccount"
+        id="myForm"
+        action="javascript:void(0);"
+        onsubmit="setLocalStorage(); validateForm(); return false; "
+      >
+            <!--  Web Page Title Section-->
+            <section class="title">
+              <h1>New Patient Registration</h1>
+              <h5 class="small-text">(Please fill in the form below)</h5>
+            </section> 
+        <table class="form" >
+          <tbody>
+
+            <!-- Registration Section -->       
+            <tr class="form" >
+              <td>
+                <h1>Patient Information</h1>
+                <label for="firstname">First Name:</label>
+                  <input
+                    type="text"
+                    id="firstname"
+                    name="Firstname"
+                    size="38"                                        
+                    required=""
+                    placeholder="(Required)- your Firstname "
+                    pattern="[A-Za-z'\- ]{1,30}"
+                    title="Please use 1 to 30  characters, space, apostrophes and dashes only"
+                      onblur="validateInput('firstname')"
+                    oninput="clearError('firstname')"
+                  />
+                  <span  class="error-message"   id="firstname-error" ></span>
+                  &emsp; &emsp;
+                <label for="middleinit">Middle Initial</label>
+                  <input
+                    type="text"
+                    size="1"
+                    maxlength="1"
+                    id="middleinit"
+                    name="Middleinit"
+                    placeholder="MI"
+                    pattern="[A-Za-z]"
+                    title="Please use only 1 letter"
+                  onblur="validateInput('middleinit')"
+                    oninput="clearError('middleinit')"
+                  />
+                  <span class="error-message" id="middleinit-error" ></span>
+                <br>
+                <label for="lasttname">Last Name:</label>
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="Lastname"
+                    size="38"
+                    maxlength="30"                      
+                    required=""
+                    placeholder="(Required)- your Lastname "
+                    pattern="[A-Za-z'\- ]{1,30}"
+                    title="Please use 1 to 30  characters, space, apostrophes and dashes only"
+                    onblur="validateInput('lastname')"
+                    oninput="clearError('lastname')"
+                  />
+                  <span  class="error-message" id="lastname-error" ></span>       
+                  &emsp; &emsp;
+                  <br><br>
+
+                <!-- Date of Birth and SSN -->
+                <label for="date0fbirth">Date of Birth</label>
+                  <input
+                    type="date"
+                    maxlength="10"
+                    id="dateofbirth"
+                    pattern="\d{2}/\d{2}/\d{4}"
+                    name="dateofbirth"
+                    required=""
+                    onblur="validateInput('dateofbirth')"
+                    oninput="clearError('dateofbirth')"
+                  />
+                  <span  class="error-message"   id="dateofbirth-error" ></span>
+                  <br /><br />
+
+                  <!-- Patient age group status -->
+                  <div>
+                <label class="form-line" data-type="control_radio"  > Is the patient younger than 18? </label>
+                &emsp;                 
+                      <input 
+                      type="radio" 
+                      id="patient_age_yes" 
+                      name="AgeOver18" 
+                      onclick="img(1)"  
+                      value="Yes" /> 
+                      <label>Yes</label>              
+                  &emsp;                  
+                      <input 
+                      type="radio" 
+                      id="patient_age_no" 
+                      name="AgeOver18" 
+                      onclick="img(2)"  
+                      value="No" /> 
+                      <label>No</label>              
+                </div>
+                <br> 
+
+                <!-- Patient gender -->
+                 <div>
+                <label for="patient_gender">Gender</label>
+                 &emsp;                
+                      <input 
+                      type="radio" 
+                      id="male" 
+                      name="YourGender"
+                      onclick="img(1)"  
+                      value="Male" /> 
+                       <label>Male</label>
+                   &emsp; 
+                      <input 
+                      type="radio" 
+                      id="female" 
+                      name="YourGender" 
+                      onclick="img(2)" 
+                      value="Female" /> 
+                     <label>Female</label>
+                </div>
+                
+                <!-- Patient marital status -->
+                <br> 
+                <label> Marital Status </label>
+                <select
+                class="dropDown"
+                name="MaritalStatus"
+                >
+                <option value="">Please select one</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Legally separated">Legally separated</option>
+                <option value="Widowed">Widowed</option>
+                <option value="NotInterested">Do not wish to report</option>
+                </select>
+                <br><br>
+              </td>           
+            </tr>
+        
+            <!-- Addresses -->  
+            <tr class="form"> 
+              <td> 
+                <!-- Home address -->
+                <label> <h1> Address </h1> </label>
+                <span> Street Address Line 1 </span>
+                  <input
+                      type="text"
+                      size="76"
+                      id="addr1"
+                      name="Addr1"
+                      placeholder="(Required)- Your home address."
+                      required=""
+                      pattern="[A-Za-z0-9 .,]{2,30}"
+                      title="Please use 2 to 30 numbers, letters and space"
+                      onblur="validateInput('addr1')"
+                      oninput="clearError('addr1')"
+                  >
+                  <div class="error-message" id="addr1-error"></div>
+                <br> <br>
+                <span> Street Address Line 2 </span>
+                <input
+                  type="text"
+                  size="76"
+                  id="addr2"
+                  name="addr2" 
+                  placeholder="not a required"
+                  oninvalid="this.setCustomValidity('Please use 2 to 30 numbers, letters and space only')" 
+                  oninput="this.setCustomValidity('')" 
+                  pattern="[A-Za-z0-9 .,]{2,30}"
+                  title="Please use 2 to 30 numbers, letters and space only"
+                  onblur="validateInput('addr2')"
+                  oninput="clearError('addr2')"
+                  >
+                  <div class="error-message" id="addr2-error"></div>
+                <br><br>
+                <span>  City </span>
+                  <input
+                    type="text"
+                    size="30"
+                    name="City"  
+                    id="city"  
+                    required
+                    placeholder="(Required)- City/Town name"
+                    oninvalid="this.setCustomValidity('Please use 2 to 30 numbers, letters and space only')" 
+                    oninput="this.setCustomValidity('')" 
+                    pattern="[A-Za-z0-9 ]{2,30}"
+                    title="Please use 2 to 30 numbers, letters and space"              
+                    onblur="validateInput('city')"
+                    oninput="clearError('city')"
+                  />
+                  <span class="error-message" id="city-error"></span>
+                  &emsp; &emsp;
+                <label> State </label>
+                  <select class="dropDown" name="State" id="countySel"  >
+                    <option value=" " selected="selected">Please select state </option>
+                    <option value="" ></option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option><option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                  </select>                
+                &emsp; &emsp; 
+                <span>  Zip </span>
+                  <input
+                    type="text"
+                    size="12"
+                    maxlength="11"
+                    name="ZipCode"
+                    id="zipcode"
+                    pattern="\d{5}(-\d{4})?"
+                    title="Please enter a 5-digit zip code"
+                    placeholder=" (Required) - Zipcode" 
+                    onblur="validateInput('zipcode')"
+                    oninput="clearError('zipcode')"
+                  />
+                  <span class="error-message" id="zipcode-error"> </span>
+                <br> <br>  
+                <!-- email and phone -->
+                <label for="email">Email</label>
+                  <input
+                    type="email"
+                    size="35"
+                    maxlength="30"
+                    name="Email"
+                    id="email"
+                    placeholder="Your best email"
+                    title="Invalid email"
+                    onblur="validateInput('email')"
+                    oninput="clearError('email')"
+                  />
+                  <span  class="error-message"     id="email-error" ></span>               
+                &emsp; &emsp;
+                <label for="phoneno">Phone Number</label>
+                  <input
+                    type="text"
+                    size="28"
+                    name="Phone"
+                    id="phone"
+                    required=""
+                    placeholder="(Required)"
+                    onblur="validateInput('phone')" 
+                    oninput="clearError('phone')"                      
+                  />  
+                  <span class="error-message" id="phone-error"></span>            
+                <br> <br> 
+              </td>
+            </tr>
+
+            <!-- Emergency contact information -->
+            <tr class="form"> 
+              <td> 
+                <div class="EmergencyContact">
+                  <h1>Emergency Contacts</h1>
+                    <label for="lastname">Emergency Contact </label>
+                      <input
+                        type="text"
+                        size="32"
+                        maxlength="25"
+                        id="emefirstname"
+                        name="EmeFirstName"
+                        placeholder="(Required)- Emergency Contact Firstname."
+                        required=""
+                        pattern="[A-Za-z'\- ]{1,30}"
+                        title="Please use 1 to 30  characters, apostrophes, space and dashes only"
+                        onblur="validateInput('emefirstname')"
+                        oninput="clearError('emefirstname')"
+                        />
+                        <span  class="error-message" id="emefirstname-error" ></span>
+                        &emsp; &emsp; 
+                    <input
+                          type="text"
+                          size="32"
+                          maxlength="25"
+                          id="emelastname"
+                          name="EmeLastName"
+                          placeholder="(Required)- Emergency Contact Lastname."
+                          required=""
+                          pattern="[A-Za-z'\- ]{1,30}"
+                          title="Please use 1 to 30  characters, apostrophes, space and dashes only"
+                          onblur="validateInput('emelastname')"
+                          oninput="clearError('emelastname')"
+                          />
+                          <span class="error-message" id="emelastname-error" ></span>
+                    <br><br> 
+                    <label for="lastname">Relationship</label>
+                      <select
+                          class="dropDown"
+                          name="EmeRelationship"
+                          >
+                        <option value="">Please select one</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="parent">Parent</option>
+                        <option value="sibling">Sibling</option>
+                        <option value="friend">Friend</option>
+                        <option value="other">Other</option>
+                      </select>                      
+                      &emsp; &emsp; &emsp;  <span> Emergency Contact Number </span>
+                      <input
+			                  type="text"
+                        size="25"
+                        maxlength="30"
+                        name="EmePhone"
+                        id="emephone"
+                        placeholder="(Required)"
+                        required=""
+                        onblur="validateInput('emephone')"   
+                        oninput="clearError('emephone')"
+                      >
+                      <span  class="error-message" id="emephone-error" ></span>
+                      <br><br>
+                    
+                    <!-- Family doctor information  -->
+                    <label for="lastname">Family Doctor </label>
+                      <input
+                      type="text"
+                      size="35"
+                      maxlength="25"
+                      id="docfirstname"
+                      name="DocFirstname"
+                      placeholder="Doctor FirstName"
+                      pattern="[A-Za-z'\- ]{1,30}"
+                      title="Please use 1 to 30  characters, apostrophes, space and dashes only"
+                      onblur="validateInput('docfirstname')"
+                      oninput="clearError('docfirstname')"
+                      />
+                      <span class="error-message" id="docfirstname-error" ></span>
+                    &emsp;  &emsp;  
+                      <input
+                      type="text"
+                      size="35"
+                      rows="2"
+                      maxlength="25"
+                      id="doclastname"
+                      name="DocLastname"
+                      oninput="validateDocLastName(this)"
+                      placeholder="Doctor LastName"
+                      pattern="[A-Za-z'\- ]{1,30}"
+                      title="Please use 1 to 30  characters, apostrophes, space and dashes only"
+                      onblur="validateInput('doclastname')"
+                      oninput="clearError('doclastname')"
+                      />
+                      <span  class="error-message"     id="doclastname-error" ></span>
+                    <br><br> 
+                    <span> Doctor's Contact Number </span>
+                      <input
+			                  type="text"
+                        size="24"
+                        maxlength="12"
+                        name="Docphone"
+                        id="docphone"
+                        placeholder="Doctor PhoneNumber"
+                        onblur="validateInput('docphone')"
+                        oninput="clearError('docphone')"   
+                      >
+                      <span  class="error-message"     id="docphone-error" ></span>
+                    <br><br>       
+                </div>    
+              </td>
+            </tr>
+            <!-- End of family doctor information --> 
+            
+            <!-- Insurance Section -->
+            <tr class="form"> 
+              <td>                             
+                <div class="Insurance_info">
+                  <h1>Insurance</h1>
+                  <label>Insurance Available:</label> &emsp; 
+                    <input 
+                      type="radio" 
+                      value="Yes" 
+                      name="Insurance" 
+                      onclick="img(0)" 
+                      id="available" >                   
+                      <label>Yes</label>
+                      &emsp; 
+                    <input 
+                      type="radio" 
+                      value="no" 
+                      name="Insurance" 
+                      onclick="img(1)" 
+                      id="not_available"> 
+                      <label>No</label>
+                      <br> <br>
+                  <label>If <b> "Yes " </b> please provide the details below</label>
+                  <br> <br>
+                  <div >
+                    <label> Insurance Provider Name : </label>
+                      <input 
+                        type="text" 
+                        size="27"
+                        name="Insurance_name" 
+                        id="insurance_name" 
+                        placeholder="Insurancename" 
+                        pattern="[A-Za-z .]{1,30}" 
+                        title="Please use only letters and space"
+                        onblur="validateInput('insurance_name')"
+                        oninput="clearError('insurance_name')"   
+                      >
+                      <span  class="error-message"   id="insurance_name-error" ></span>
+                    &emsp; &emsp;
+                    <label> Policy ID  </label>                   
+                      <input 
+                        type="text" 
+                        name="PolicyID" 
+                        placeholder="Policynumber" 
+                        id="policyid" 
+                        pattern="^[A-Za-z0-9_-]{5,20}$" 
+                        title="ID must be 5 to 20 characters, with letters, numbers, dashes, and underscores only"
+                        onblur="validateInput('policyid')"
+                        oninput="clearError('policyid')"   
+                      >
+                      <span  class="error-message"     id="policyid-error" ></span>
+                    <br>
+                  </div>
+                  <br>
+              </td>
+            </tr>
+            <!-- End of insurance section-->
+            <!-- Medical History Section -->
+            <tr class="form">
+              <td >
+                <h1>Medical History</h1>
+                  <label for="reasons">Reason for the Visit</label>     
+                  <input
+                    type="text"
+                    size="77"                  
+                    maxlength="30"
+                    name="Reason"                   
+                    placeholder="(Required)- Please explain about reason for the today's visit. "
+                    required="" 
+                    id="reason"
+                    pattern="[A-Za-z .]{1,50}" 
+                    title="Please use only letters and space"
+                    onblur="validateInput('reason')"
+                    oninput="clearError('reason')"   
+                      >
+                    <span  class="error-message"     id="reason-error" ></span> 
+                  <br><br> 
+                  <label>Do you have pain?</label> &emsp; 
+                  <input 
+                    type="radio" 
+                    value="Yes" 
+                    name="Pain " 
+                    onclick="img(0)" 
+                    id="available" >
+                    <label>Yes</label>
+                    &emsp; 
+                  <input 
+                    type="radio" 
+                    value="no" 
+                    name="Pain" 
+                    onclick="img(1)" 
+                    id="not_available"> 
+                    <label>No</label>
+                    <br> <br>  <br>  
+                <p> How would you rate your pain 0 to 10? </p> 
+                <br> <br>
+                <label for="slider-start"> <label  class="p1">Pain Level: 0</label>
+               <!-- Your range input with scale -->
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="10" 
+                  value="5" 
+                  name="PainLevel"
+                  class="slider" 
+                  id="inputRange" 
+                  list="tickmarks"
+                />
+
+                <!-- Datalist for tickmarks -->
+                <datalist id="tickmarks">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </datalist>
+                <label for="slider-end"> <label class="p1">10</label>
+                <p class=" center"> 
+                  Pain Level: <strong><span  id="midvalue">5</span></strong></p>
+                <br>  
+                  <label for="description" >Brief medical history</label>
+                  <br> &emsp; &emsp;                                                            
+                  <input type="checkbox"  name="disease:-" value="Diabetes">
+                    <label>Diabetes</label><br>
+                  &emsp; &emsp;
+                  <input type="checkbox"  name="disease:-" value="Hypertension">
+                    <label>Hypertension</label><br>
+                  &emsp; &emsp;
+                  <input type="checkbox"  name="disease:-" value="Allergies">
+                    <label>Allergies</label><br>
+                  &emsp; &emsp;
+                  <input type="checkbox"  name="disease:-" value="Chicken Pox">
+                  <label>Chicken Pox</label><br>
+                  &emsp; &emsp;
+                  <input type="checkbox"  name="disease:-" value="Covid-19">
+                    <label for="covid19">Covid-19</label><br>
+                  &emsp; &emsp;
+                  <input type="checkbox"  name="disease:-" value="Influenza">
+                    <label>Influenza</label><br> 
+                  &emsp; &emsp;
+                  <input type="checkbox"  name="disease:-" value="Asthma">
+                    <label for="asthma">Asthma</label><br> 
+                  &emsp; &emsp;           
+                  <input type="checkbox"  name="disease:-" value="Cancer">
+                    <label>Cancer</label><br> 
+                  &emsp; &emsp;                                                                   
+                  <input type="checkbox"  name="disease:-" value="Heart attack">
+                    <label>Heart attack</label><br> 
+                  &emsp; &emsp;          
+                  <input type="checkbox"  name="disease:-" value="Others">
+                    <label>Others</label> <br>
+                    &emsp; &emsp; &emsp; &emsp; 
+                    <textarea rows="5" cols="85" maxlength="500" id="description" name="description" 
+                    placeholder="(Give us some more details about your medical history...)"></textarea>
+                  <span id="description_text"> </span>
+                </td>
+                </tr>
+                <br>
+
+            <!-- Create Account -->             
+            <tr class="form">
+              <td> 
+                <h1>Create Account</h1> 
+                <label for="username">Username:</label>
+                  <input 
+                  type="text"
+                  size="30"  
+                  id="username"
+                  name="Username" 
+                  pattern="^[A-Za-z0-9_-]{5,20}$"
+                  required="Required"
+                  placeholder="Required" 
+                  title="Username must contain at least 5-20 characters: numbers, letters, dashes, and underscores"
+                  onblur="validateInput('username')"
+                  oninput="clearError('username')"
+                  >
+                  <span class="error-message"  id="username-error"></span>
+                <br><br>
+                <label for="password">Password:</label>
+                  <input 
+                    type="password" 
+                    size="31" 
+                    maxlength="20" 
+                    id="password" 
+                    name="Password" 
+                    placeholder="Required" 
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                    title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    required=""
+                    onblur="validateInput('password')"
+                    oninput="clearError('password')"
+                    >
+                    <span class="error-message"  id="password-error"></span>
+                <br><br>
+                <label for="confirm_password">Confirm Password:</label>
+                  <input 
+                    type="password"
+                    size="22" 
+                    maxlength="20"   
+                    name="ConfirmPassword" 
+                    id="confirmpassword" 
+                    placeholder="Required" 
+                    required=""
+                    onblur="validateInput('confirmpassword')"
+                    oninput="clearError('confirmpassword')"
+                    >
+                    <span class="error-message"  id="confirmpassword-error"></span>
+                  <br><br>
+              </td>    
+            </tr>
+
+  <!-- Submit button section   onclick="FinalreviewForm()" -->
+            <tr>
+              <td>
+                <section class="buttons">            
+                  <div
+                  class="g-recaptcha"
+                  data-sitekey="6LcUXSQpAAAAAK8pCS-jL3lZxAgcp_8dBwvrsmGK"
+                  data-callback="enableSubmitButton">
+                  </div>
+                  <br><br>
+                  <input
+                    type="button"
+                    value="Review"           
+                    id="submitButton"
+                    onclick="handleReviewButtonClick()"
+                    disabled 
+                  />
+                  <input type="reset" onclick="resetPage()" value="Reset" />  
+                </section>         
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </section>
+    <br><br><hr>
+    <p id="outputformdata"> </p>
+<br>
+    <!-- Footer section -->
+    <section > 
+    <iframe id="iframeFooter" src="./footer.html" scrolling="no"></iframe>
+    </section>
+
+    <!-- custome java script -->
+  <script src="./reviewPage.js"></script>
+  <script src="./validateData.js"></script>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </body>
+</html>     

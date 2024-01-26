@@ -1,0 +1,258 @@
+/* 
+ Purpose: Style sheet to define the layout, design, and appearance of mKaT's Clinic web pages. 
+ by: Ma Ya
+  Date Updated: 01/15/2024
+ */
+
+/* Common styles */
+body {
+  background-color: #aec1f9;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 20px 200px 20px 200px;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+.center h1,
+.center,
+.thanks {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Formatting the input data */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: lightpink;
+  outline: none;
+}
+input[type="text"],
+input[type="password"],
+textarea {
+  padding: 8px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type="date"],
+input[type="email"],
+.dropDown {
+  padding: 8px;
+  margin: 5px 0 10px 0;
+  border: none;
+}
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover {
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border: none;
+  background-color: rgb(12, 51, 99);
+  font-weight: bold;
+  color: #f9f9f9;
+}
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border: none;
+  background-color: bisque;
+  font-weight: bold;
+}
+
+.buttons {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Title style */
+h1 {
+  color: blue;
+  text-align: left;
+}
+
+.title h1 {
+  font-size: 30px;
+  color: black;
+  text-align: center;
+}
+
+.small-text {
+  font-size: small;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Style the main section of the form */
+.registration {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+table.form,
+tr.form,
+td.form {
+  width: fit-content;
+  opacity: 0.9;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightgreen;
+  border-spacing: 00px;
+  padding: 50px;
+  text-align: left;
+}
+
+/* Style the iframes and the footer */
+/* Style the iframes and the footer */
+.sticky-header iframe {
+  width: 100%;
+  border: none;
+  height: 250px;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #aec1f9;
+  padding: 15px;
+  text-align: center;
+  z-index: 100;
+}
+
+#iframeFooter {
+  width: 100%;
+  border: 2px solid #ccc;
+  height: 23vh;
+}
+
+.footer {
+  /* position: fixed; */
+  width: auto;
+  text-align: center;
+  padding-top: 25px;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgreen;
+  font-style: "font-family:Tahoma;";
+}
+
+/* Adjust the width of the range input */
+.slider {
+  width: 80%;
+}
+
+/* flying logo accross the page */
+#flying-logo-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#flying-logo {
+  width: 200px;
+  position: absolute;
+  opacity: 0.7;
+}
+
+/* style for table of contents */
+#table-of-contents {
+  background-color: lightskyblue;
+  padding: 20px;
+  width: 200px;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  padding-top: 550px;
+}
+
+#table-of-contents ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#table-of-contents li {
+  margin-bottom: 10px;
+}
+
+#table-of-contents a {
+  text-decoration: none;
+  color: blue;
+  font-weight: bold;
+}
+
+#table-of-contents .tab a {
+  color: green;
+}
+
+#table-of-contents a:hover {
+  color: #ff6347;
+}
+
+summary:hover {
+  font-size: 1.2em;
+  color: #0077cc;
+  cursor: pointer;
+}
+summary {
+  position: relative;
+  cursor: pointer;
+}
+
+summary:hover::before {
+  content: "";
+  position: absolute;
+  background-color: lightsalmon; /* Pink color */
+  width: 100%;
+  height: 40px;
+  top: -10px;
+  left: 0;
+  z-index: -5;
+}
+
+summary:hover {
+  font-size: 1.2em; /* Adjust the magnification factor as needed */
+  color: #0077cc; /* Bright blue color */
+}
+
+#content {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+.subsection {
+  margin-left: 20px;
+}
+
+.subsection summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+.tab {
+  margin-left: 30px;
+}
